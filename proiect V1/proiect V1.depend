@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1463062355 source:c:\users\gigi_beraru\desktop\proiect v1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"into_tija.h"
+
+1463063981 source:c:\users\gigi_beraru\desktop\proiect v1\into_tija.c
+	<stdio.h>
+	<stdlib.h>
+
+1463059707 c:\users\gigi_beraru\desktop\proiect v1\into_tija.c
+	<stdio.h>
+	<stdlib.h>
+
+1463060222 c:\users\gigi_beraru\desktop\proiect v1\into_tija.h
+
