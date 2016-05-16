@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1463431222 source:c:\users\gigi_beraru\desktop\proiect_v3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
