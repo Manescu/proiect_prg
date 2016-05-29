@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1464536061 source:c:\users\gigi_beraru\desktop\proiect_v4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"rod_cutting.h"
+
+1464535791 c:\users\gigi_beraru\desktop\proiect_v4\rod_cutting.h
+
+1464537288 source:c:\users\gigi_beraru\desktop\proiect_v4\rod_cutting.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"rod_cutting.h"
+
