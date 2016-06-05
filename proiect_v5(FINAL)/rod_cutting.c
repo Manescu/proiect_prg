@@ -14,15 +14,16 @@ int n,i,j;
 float **a;
 int *x;
 srand((unsigned) time(NULL));
-n=5;
+n=rand() % 40+1;
 printf("dimensiunea tijei: %d", n);
 printf("\n");
+
 //generam tabelul de preturi
 x=(int *) calloc (n,sizeof(int));
 srand((unsigned) time(NULL));
 for(i=1;i<=n-1;i++)
     {
-        scanf("%d",&x[i]);
+        x[i]=rand() % 500+1;
     }
 //alocam memorie pt matrice
 a = (float **) malloc(n * sizeof(float *));
