@@ -31,20 +31,16 @@ a = (float **) malloc(n * sizeof(float *));
 for (i = 0; i < n; i++) {
     a[i]=calloc(n, sizeof(float));}
 
-    if(n!=0)
+for(i=1;i<=n-1;i++)
     {
-        for(i=1;i<=n-1;i++)
+        for(j=1;j<=n;j++)
         {
-            for(j=1;j<=n;j++)
-            {
-                if(j>=i)
-                   a[i][j] = max(a[i-1][j],x[i]+a[i][j-i]);
-                else
-                    a[i][j]=a[i-1][j];
-            }
+            if(j>=i)
+                a[i][j] = max(a[i-1][j],x[i]+a[i][j-i]);
+            else
+                a[i][j]=a[i-1][j];
         }
     }
-
 
 //afisam posibile preturi
 printf("mai jos aveti o lista cu profiturile pe care il puteti obtine\n\n");
