@@ -1,0 +1,15 @@
+<max>:1: warning: argument 'A' of command @param is not found in the argument list of max(int a, int b)
+<max>:1: warning: argument 'B' of command @param is not found in the argument list of max(int a, int b)
+C:/Users/gigi_beraru/Desktop/[TP]Manescu Marius-Alexandru 10104/the rod cutting problem/rod_cutting.c:13: warning: The following parameters of max(int a, int b) are not documented:
+  parameter 'a'
+  parameter 'b'
+<rod_cutting>:1: warning: argument 'n' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'a' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'x' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'i' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'j' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'n' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'a' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'x' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'i' of command @param is not found in the argument list of rod_cutting()
+<rod_cutting>:1: warning: argument 'j' of command @param is not found in the argument list of rod_cutting()

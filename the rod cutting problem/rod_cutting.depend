@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1465156089 source:c:\users\gigi_beraru\desktop\[tp]manescu marius-alexandru 10104\the rod cutting problem\rod_cutting.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"rod_cutting.h"
+
+1465154734 c:\users\gigi_beraru\desktop\[tp]manescu marius-alexandru 10104\the rod cutting problem\rod_cutting.h
+
