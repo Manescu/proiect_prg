@@ -8,7 +8,7 @@
 #include "rod_cutting.h"
 int main()
 {
-    int max();
+    max();
     rod_cutting();
     return 0;
 }
