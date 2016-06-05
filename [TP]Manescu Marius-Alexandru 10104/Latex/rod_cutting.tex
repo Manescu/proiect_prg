@@ -1,0 +1,180 @@
+% simple.tex - A simple article to illustrate document structure.
+
+% preamble
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[document]{ragged2e}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{blindtext}
+
+
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+%% \usepackage{times}
+
+\begin{document}
+
+% top matter
+
+\title{The rod cutting problem}
+\author{M\u{a}nescu Marius-Alexandru}
+\date{\today}
+\maketitle
+
+\begin{center}
+\begin{tabular}{ c c c}
+
+Anul: I \qquad & Grupa: 10104 A \qquad & Specializarea: Calculatoare roman\u{a}  \\ 
+    
+\end{tabular}
+\end{center}
+
+
+\newpage
+% abstract
+
+\begin{abstract}
+Documentul de fa\c{t}\u{a} descrie problema abordat\u{a} \c{s} modul \^in care acesta poate fi rezolvat\u{a}, utiliz\^and diverse tehnici de programare 
+\end{abstract}
+
+% sections
+\section{Introducere}
+ \par \qquad \^In cele ce urmeaz\u{a} voi \^incerca s\u{a} descriu c\^at mai bine proiectul ales, modul \^in care se comport\u{a} \c{s}i care este scopul acestuia.
+ \newline
+ \par \qquad Codul este disponibil la acest\u{a} adres\u{a} 
+            \url{https://github.com/Manescu/proiect_prg/blob/master/the%20rod%20cutting%20problem/rod_cutting.c}
+ 
+\section{Descrierea proiectului}
+Problema presupune \^impar\c{t}irea unei tije \^in n elemente nu neap\u{a}rat egale, fiecare element av\^{a}nd un pre\c{t} diferit.In felul acesta trebuie s\u{a} descoperim cea mai bun\u{a} metod\u{a} de a decupa bara astfel \^inc\^at s\u{a} ob\c{t}inem cel mai bun profit.
+
+\begin{enumerate}
+
+\item Pentru \^inceput trebuie s\u{a} gener\u{a}m dimensiunea tijei \c{s}i tebelul de pre\c{t}uri astfel: \newline
+ \indent $ \> \> \> \> \> \> $ $ n\leftarrow $ random $   1- 100 $ \newline
+\indent $ \> \> \> \> \> \> $ afisam n
+
+ \item Afi\c{s}\u{a}m tabelul de pre\c{t}uri \newline
+\par \qquad Deoarece dimensiunea tijei poate varia \^{i}ntr-un interval destul de mare, vectorul (tabelul) trebuie alocat dinamic, deasemenea valorile componentelor tijei, pe care le salv\u{a}m in vector, trebuiesc scrise automat prin functia {\bf random}.
+\par \qquad Structura de vector/matrice are avantajul simplit\u{a}\c{t}ii si economiei. Alocarea dinamica este o solu\c{t}ie mai flexibil\u{a},care folose\c{s}te mai bine memoria \c{s}i nu impune limit\u{a}ri arbitrere asupra utiliz\u{a}ri unor programe.
+\newline
+\begin{itemize}
+\item Operatorul {\bf sizeof} este utilizat pentru a determina num\u{a}rul de octe\c{t}i necesari unui tip de variabile.
+\end{itemize}
+\indent $ \> \> \> \> \> \> $ $ x \leftarrow (int *) calloc (n,sizeof(int)) $  \newline
+\indent $ \> \> \> \> \> \> $ $ srand((unsigned) time(NULL)) $ 
+\newline
+\indent $ \> \> \> \> \> \> $ {\bf pentru} $ i\leftarrow 1 $ la n  {\bf executa} \newline
+\indent $ \> \> \> \> \> \> $ $\>   \>  \> \> \> \> \> \> \> x_i \leftarrow random \> 1-1000 $
+\newline 
+
+\item Gener\u{a}m o matrice de $ n-1 $ linii si n coloane, pe care o alocam dinamic, in care salv\u{a}m calculele \^{i}n scopul ob\c{t}inerii solu\c{t}iei optime:
+
+\indent $ \> \> \> \> \> \> $ real $**a $ \newline
+\indent $ \> \> \> \> \> \> $ $ a \leftarrow  (real **) malloc(n * sizeof(real *)) $ \newline
+\indent $ \> \> \> \> \> \> $ {\bf pentru} $ \> i  \leftarrow 1 \> la n $ {\bf executa} \newline
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ a_i \leftarrow calloc(n, sizeof(real)) $
+\newline
+
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ {\bf pentru} \> i \leftarrow 1 \> la \> n-1 $ {\bf execut\u{a}} 
+\newline
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $  $ {\bf pentru} \> j \leftarrow 1 \> la \> n $ {\bf execut\u{a}} 
+\newline
+
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ {\bf daca} $ \> j >= i $ {\bf atunci}
+\newline
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ a_{ij} \leftarrow max(a_{i-1,j},x_i+a_{i,j-i}) $
+
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ {\bf altfel} 
+\newline
+\indent $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ \> \> \> \> \> \> $ $ a_{i,j}=a_{i-1,j} $
+
+\end{enumerate}
+
+\section{\textbf{ \huge Exemple:}}
+
+
+\par \qquad\text{1.}  Pentru $ n=5 $ (dimensiunea tijei) avem:
+\begin{itemize}
+\item \begin{tabular}{c|c|c|c|}
+    1 & 2 & 3 & 4   \\
+    2 \$ & 5 \$ & 7 \$ & 8 \$
+\end{tabular} 
+
+
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 1 pre\c{t}ul este de 2 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 2 pre\c{t}ul este de 5 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 3 pre\c{t}ul este de 7 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 4 pre\c{t}ul este de 8 \$
+\newline
+
+\par \qquad Solu\c{t}ia optim\u{a} pentru aceste date de intrare este: \textbf{1,2,2} sau \textbf{2,3}
+
+\par \qquad \text{2.} Pentru $ n=9 $ avem:
+\newline
+\item \begin{tabular}{c|c|c|c|c|c|c|c|}
+     1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\
+     3 \$ & 5 \$ & 8 \$ & 9 \$ & 10 \$ & 17 \$ & 17 \$ & 20 \$  
+\end{tabular}
+
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 1 pre\c{t}ul este de 3 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 2 pre\c{t}ul este de 5 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 3 pre\c{t}ul este de 8 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 4 pre\c{t}ul este de 9 \$
+\newline
+
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 5 pre\c{t}ul este de 10 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 6 pre\c{t}ul este de 17 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 7 pre\c{t}ul este de 17 \$
+\newline
+\par $\triangleright $ Pentru o t\u{a}ietura de dimensiune 8 pre\c{t}ul este de 20 \$
+\newline
+\par \qquad Solu\c{t}ia optim\u{a} pentru aceste date de intrare este: \textbf{6,3} cu un profit de 25 \$
+\end{itemize}
+\newpage
+\subsection{List\u{a} func\c{t}ii}
+\par \qquad Mai jos este prezent\u{a} o list\u{a} de fuc\c{t}ii care sunt utilizate in program:
+
+\begin{itemize}
+ \item  $ int \> \> max(int \> \> a, int \> \> b) $ ce returneaz\u{a} maximul intre doua numere.
+ \newline
+ \qquad \qquad  $\triangleright $ a \c{s}i b sunt parametri de tip intreg
+ \newline
+ 
+\item $ float \> \> rod\_\_cutting() $,reprezint\u{a} esen\c{t}a programului, unde:
+\newline
+\qquad \qquad $\triangleright $ n, i, j sunt parametri de tip intreg
+\newline
+\qquad \qquad $\triangleright $ $ **a $ - declararea matricei a ce urmeaz\u{a} a fi aloct\u{a} dinamic
+\newline
+\qquad \qquad $\triangleright $ $ *x $ - un vector ce urmeaz\u{a} a fi alocat dinamic
+\newline 
+\qquad \qquad $\triangleright $ ar trebui s\u{a} returneze solu\c{t}ia optim\u{a} pentru problem\u{a}
+\end{itemize}
+
+
+
+\begin{thebibliography}{9}
+\bibitem a Brian W. Kernighan and Dennis Ritchie
+        \emph{The C Programming Language} (2nd Edition)
+\bibitem  aPeter van der Linden 
+        \emph{Expert C Programming}
+\bibitem{latex}
+      
+     \url{https://www.sharelatex.com/learn/},
+     accesat \^in data de 5 mai 2016 
+\end{thebibliography}
+
+\end{document}
